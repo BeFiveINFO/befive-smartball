@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+	<head>
+		<title>BeFive Smart Ball</title>
+		<link rel="stylesheet" href="css/remodal.css">
+		<link rel="stylesheet" href="css/remodal-default-theme.css">
+		<style>
+			body{
+				height: 100%;
+				background-color:  #2d2d2d;
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none; /* Safari */
+				-khtml-user-select: none; /* Konqueror HTML */
+				-moz-user-select: none; /* Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+				user-select: none; /* Non-prefixed version, currently
+				supported by Chrome and Opera */
+			}
+
+			.dg.main .close-button.close-bottom {
+				background-color: rgba(0,0,0,0.3);
+			}
+
+			body a.gui-link {
+				display: block;
+				text-align: center;
+				text-decoration: none;
+				color: #FFFFFF;
+				height: 17px;
+				line-height: 17px;
+				border-radius: 25px;
+				background-color: #FF0000;
+				margin-top: 5px;
+				cursor: pointer !important;
+			}
+
+			#cabinet canvas{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			#gui_container{
+				position: absolute;
+				top: 0px;
+				left: 38%;
+				z-index: 10000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="gui_container"></div>
+
+		<div id="cabinet">
+			<canvas id='container'></canvas>
+		</div>
+
+		<!-- modal -->
+		<div class="remodal" data-remodal-id="modal">
+			<button data-remodal-action="close" class="remodal-close"></button>
+			<h2>BeFive Smart Ball - How to Play</h2>
+			<p>1. Press Start Button to buy balls. Balls are fed from the dispenser at the right top of the cabinet.</p>
+			<p>2. Press and hold space bar in your keyboard or white button on the right side of cabinet to launch a ball.</p>
+			<p>3. You are awareded with balls as your ball enters into any of "safe holes" in the playfield.</p>
+			<p>4. Press on the Payout button or "P" key in your keyboard to exchange remaining balls in the screen for credits. 1 ball is exchanged to 1 credit.</p>
+			<p>You can rotate the game scene by dragging the screen with your mouse. Right click dragging changes pan and  mouse wheel allow you to change the zooming.</p>
+			<p>Keyboard shortcuts. SPACE BAR: shoot a ball. P: Payout. S: Start. F: Full screen. C: Reset camera position. T: toggle control panel.</p>
+			<p>Note: Balls are sometimes clogged. Try "Payout" to clear off balls from the playfield.</p>
+			<br>
+			<button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+			<!-- <button data-remodal-action="confirm" class="remodal-confirm">More</button> -->
+		</div>
+		<!-- message -->
+		<div class="remodal" data-remodal-id="modal_alert">
+			<button data-remodal-action="close" class="remodal-close"></button>
+			<div class="modal_content"></div>
+			<button data-remodal-action="cancel" class="remodal-cancel">OK</button>
+		</div>
+
+		<script src='./scripts/lib/jquery-3.2.1.min.js'></script>
+		<script src='./scripts/lib/remodal.min.js'></script>
+		<script src='./scripts/lib/dat.gui.min.js'></script>
+		<script src='./scripts/lib/threejs/three.min.js'></script>
+		<script src='./scripts/lib/threejs/Detector.js'></script>
+		<script src='./scripts/lib/oimojs/oimo.min.js'></script>
+		<script src='./scripts/lib/soundjs-0.6.2.min.js'></script>
+
+		<!-- /** ext. libs */ -->
+		<script src='./scripts/lib/threejs/tween.min.js'></script>
+		<script src='./scripts/lib/threejs/OrbitControls.js'></script>
+
+		<!-- PCBs -->
+		<script src='./scripts/PCB/nvramController.js'></script>
+		<script src='./scripts/PCB/event.js'></script>
+		<script src='./scripts/PCB/audio.js'></script>
+		<script src='./scripts/PCB/player_io.js'></script>
+		<script src='./scripts/PCB/d_sprite.js'></script>
+		<script src='./scripts/PCB/gpu.js'></script>
+		<script src='./scripts/PCB/dsp_balls.js'></script>
+		<!-- PCB initializer -->
+		<script src='./scripts/PCB/init.js'></script>
+
+		<!-- ROM -->
+		<script src='./scripts/ROM/ROM-sound.js'></script>
+		<script src='./scripts/ROM/ROM-d_sprite.js'></script>
+		<script src='./scripts/ROM/ROM-d_sprite_materials.js'></script>
+		<script src='./scripts/ROM/ROM-d_sprite_geometries.js'></script>
+		<script src='./scripts/ROM/ROM-nvram.js'></script>
+		<!-- boot -->
+		<script src='./scripts/ROM/ROM-boot.js'></script>
+		<script src='./scripts/PCB/boot.js'></script>
+
+		<!-- debug program -->
+		<script src='./scripts/debug.js'></script>
+	</body>
+</html>
