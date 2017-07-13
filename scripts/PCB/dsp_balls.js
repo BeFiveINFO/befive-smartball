@@ -136,16 +136,6 @@ PCB.dsp_balls = {
 				 * Part modules ordered by use frequencies.
 				 */
 				switch(_partModule) {
-					case 'needle':
-						var _objectSpeed = (_body.prevPosition === null ) ? 2 : this.__findDistanceVector(_body.position,_body.prevPosition);
-						if(_objectSpeed > 0.5){
-							_body.prevPosition = JSON.parse(JSON.stringify(_body.position));
-							var _collisionShock = (Math.abs(_body.linearVelocity.x) + Math.abs(_body.linearVelocity.y) + Math.abs(_body.linearVelocity.z));
-							_collisionShock = (_collisionShock > 4 ) ? 1 : _collisionShock / 4;
-							PCB.audio.play('needle',_collisionShock);
-						}
-						_detectedInstance = _targetObject = null;
-						break;
 					case 'laneEndSpring':
 						var _collisionShock = (Math.abs(_body.linearVelocity.x) + Math.abs(_body.linearVelocity.y) + Math.abs(_body.linearVelocity.z));
 						_collisionShock = (_collisionShock > 6 ) ? 1 : (_collisionShock < 0.5 ) ? 0 : _collisionShock / 6;
@@ -243,6 +233,16 @@ PCB.dsp_balls = {
 						}
 						// _detectedInstance = _targetObject = null;
 						continue;
+						break;
+					case 'needle':
+						var _objectSpeed = (_body.prevPosition === null ) ? 2 : this.__findDistanceVector(_body.position,_body.prevPosition);
+						if(_objectSpeed > 0.5){
+							_body.prevPosition = JSON.parse(JSON.stringify(_body.position));
+							var _collisionShock = (Math.abs(_body.linearVelocity.x) + Math.abs(_body.linearVelocity.y) + Math.abs(_body.linearVelocity.z));
+							_collisionShock = (_collisionShock > 4 ) ? 1 : _collisionShock / 4;
+							PCB.audio.play('needle',_collisionShock);
+						}
+						_detectedInstance = _targetObject = null;
 						break;
 					default:
 						console.log("Unknown partModule");
